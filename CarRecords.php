@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,22 +11,46 @@
 </head>
 <body>
 <?php
-    $carID = $_GET['cardId'];
-    $Model = $_GET['Model'];
-    $Make = $_GET['make'];
-    $image = $_GET['image'];
-?>
-<div class="container">
-    <div class="card" style="width: 18rem;">
-        <img src="<?php echo $image; ?>" class="card-img-top"  alt="<?php echo "$Make $Model"; ?>">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="CarMaintence.php?cardId=<?php echo $carID; ?>&make=<?php echo $Make; ?>&Model=<?php echo $Model;?> &image=<?php echo $image;?>"class = "btn btn-primary"> View car </a>
+$carID = $_GET['cardId'];
+$Model = $_GET['Model'];
+$Make = $_GET['make'];
+$image = $_GET['image'];
+
+    $conn = mysqli_connect("localhost", "root", "", "car_rentals_db", "3306");
+    $sql = "SELECT Date, Description, Cost FROM carmaintenance;";
+    $result = mysqli_query($conn, $sql);
+            echo "<br><br>";
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $date = $row['Date'];
+                    $description = $row['Description'];
+                    $cost = $row['Cost'];
+                    ?>
+
+
+ 
+            <?php
+                }
+            }
+            ?>
+           <div class="container">
+    <div class="card row shadow-lg p-3 mb-5 bg-white rounded" >
+    <div class="card-body">
+        <img src="<?php echo $image; ?>" class="card-img-top"  alt="<?php echo "$make $model"; ?>">
+            <h5 class="card-title">Maintenance Log</h5>
+            <p class="card-text">Miantenance Log: <?php echo "$date"; ?></p>
+            <p class="card-text">Miantenance log description: <?php echo "$description"; ?></p>
+            <p class="card-text">Miantenance log cost: <?php echo "$cost"; ?></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
 
         </div>
+
     </div>
-    
 </div>
+
+
+
+
 </body>
 </html>
+
