@@ -25,6 +25,8 @@ $image = $_GET['image'];
                     $date = $row['Date'];
                     $description = $row['Description'];
                     $cost = $row['Cost'];
+                    
+                    
                     ?>
 
 
@@ -41,6 +43,7 @@ $image = $_GET['image'];
             <p class="card-text">Miantenance Log: <?php echo "$date"; ?></p>
             <p class="card-text">Miantenance log description: <?php echo "$description"; ?></p>
             <p class="card-text">Miantenance log cost: <?php echo "$cost"; ?></p>
+            <p class ="card-text">Miantenance log cost: <?php echo "$cost"; ?></p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
 
         </div>
