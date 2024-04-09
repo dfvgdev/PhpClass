@@ -1,5 +1,8 @@
 
+<?php 
+session_start();
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +18,11 @@ $carID = $_GET['cardId'];
 $Model = $_GET['Model'];
 $Make = $_GET['make'];
 $image = $_GET['image'];
+$_SESSION['cardId'] = $carID ;
+$_SESSION['Model'] = $Model;
+$_SESSION['make'] = $Make;
+$_SESSION['image'] = $image;
+
 
     $conn = mysqli_connect("localhost", "root", "", "car_rentals_db", "3306");
     $sql = "SELECT Date, Description, Cost FROM carmaintenance;";
@@ -32,6 +40,8 @@ $image = $_GET['image'];
 
  
             <?php
+            $_SESSION['price'] = $cost;
+            $_SESSION['data'] = $description;
                 }
             }
             ?>
@@ -44,8 +54,7 @@ $image = $_GET['image'];
             <p class="card-text">Miantenance log description: <?php echo "$description"; ?></p>
             <p class="card-text">Miantenance log cost: <?php echo "$cost"; ?></p>
             <p class ="card-text">Miantenance log cost: <?php echo "$cost"; ?></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-
+            <a href = "Sessions.php" class = "btn btn-primary">Change Details</a>
         </div>
 
     </div>

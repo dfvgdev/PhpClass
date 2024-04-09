@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +48,10 @@
 <div class="card row " style="width: 18rem; ">
     <img class="card-img-top" src= "<?php echo $image; ?>" alt="Card image cap">
     <div class="card-body">
-    <h5 class="card-title"><?php echo $Model; ?></h5>
+    <h5 class="card-title flex-box justify-content-between">
+    <?php echo $Model; ?>
+    <a href = "editCar.php?carId= <?php echo "Edit" ?>" class = "badge bg-warning rounded-pill">Edit</a>
+  </h5>
     <p class="card-text">Statues: <?php echo $status; ?> Year:  <?php echo $year; ?>, Make: <?php echo $Make; ?></p>
     <a href="CarRecords.php?cardId=<?php echo $carID; ?>&make=<?php echo $Make; ?>&Model=<?php echo $Model;?> &image=<?php echo $image;?>"class = "btn btn-primary"> View car </a>
   </div
